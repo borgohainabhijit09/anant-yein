@@ -1,17 +1,17 @@
 export const CATEGORIES = [
-  { id: 'fried-rice', name: 'Fried Rice', icon: '🍚' },
-  { id: 'noodles', name: 'Noodles', icon: '🍝' },
-  { id: 'starters', name: 'Starters', icon: '🌶️' },
-  { id: 'chicken', name: 'Chicken', icon: '🍗' },
-  { id: 'momos', name: 'Momos', icon: '🥟' },
-  { id: 'combos', name: 'Combos', icon: '🍱' },
+  { id: 'fried-rice', name: 'Fried Rice', image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&q=80&w=400' },
+  { id: 'noodles', name: 'Noodles', image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&q=80&w=400' },
+  { id: 'manchurian', name: 'Manchurian', image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=400' },
+  { id: 'chicken', name: 'Chicken', image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=400' },
+  { id: 'momos', name: 'Momos', image: 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&q=80&w=400' },
+  { id: 'soups', name: 'Soups', image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&q=80&w=400' },
 ];
 
 export const FOOD_ITEMS = [
   {
     id: 'fr1',
     name: 'Veg Fried Rice',
-    description: 'Classic wok-tossed rice with fresh mixed vegetables.',
+    description: 'Carrot · beans · wok tossed',
     price: 120,
     categoryId: 'fried-rice',
     image: 'https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&q=80&w=800',
@@ -20,7 +20,7 @@ export const FOOD_ITEMS = [
   {
     id: 'fr2',
     name: 'Chicken Fried Rice',
-    description: 'Flavorful fried rice with tender chicken pieces and egg.',
+    description: 'Chicken · egg · wok tossed',
     price: 170,
     categoryId: 'fried-rice',
     image: 'https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=800',
@@ -28,8 +28,8 @@ export const FOOD_ITEMS = [
   },
   {
     id: 'fr3',
-    name: 'Schezwan Chicken Fried Rice',
-    description: 'Spicy wok-tossed rice with chicken and fiery schezwan sauce.',
+    name: 'Schezwan Chicken Rice',
+    description: 'Spicy · chicken · wok tossed',
     price: 190,
     categoryId: 'fried-rice',
     image: 'https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&q=80&w=800',
@@ -38,7 +38,7 @@ export const FOOD_ITEMS = [
   {
     id: 'nd1',
     name: 'Chicken Hakka Noodles',
-    description: 'Classic Indo-Chinese style noodles tossed with chicken and veggies.',
+    description: 'Chicken · veggies · thin noodles',
     price: 170,
     categoryId: 'noodles',
     image: 'https://images.unsplash.com/photo-1612927601601-6638404737ce?auto=format&fit=crop&q=80&w=800',
@@ -47,7 +47,7 @@ export const FOOD_ITEMS = [
   {
     id: 'nd2',
     name: 'Veg Hakka Noodles',
-    description: 'Stir-fried noodles with crunchy cabbage, carrots, and bell peppers.',
+    description: 'Cabbage · carrot · thin noodles',
     price: 120,
     categoryId: 'noodles',
     image: 'https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&q=80&w=800',
@@ -56,25 +56,25 @@ export const FOOD_ITEMS = [
   {
     id: 'st1',
     name: 'Gobi Manchurian',
-    description: 'Crispy cauliflower florets tossed in a sweet, spicy & tangy manchurian sauce.',
+    description: 'Cauliflower · sweet & tangy',
     price: 130,
-    categoryId: 'starters',
+    categoryId: 'manchurian',
     image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=800',
     popular: true,
   },
   {
     id: 'st2',
     name: 'Chicken Manchurian',
-    description: 'Diced chicken in a savory and slightly sweet soy-based sauce.',
+    description: 'Diced chicken · soy-based sauce',
     price: 190,
-    categoryId: 'starters',
-    image: 'https://images.unsplash.com/photo-1623689048105-a17b1e194091?auto=format&fit=crop&q=80&w=800',
+    categoryId: 'manchurian',
+    image: 'https://images.unsplash.com/photo-1525755669956-ce6bfc34cbc4?auto=format&fit=crop&q=80&w=800',
     popular: true,
   },
   {
     id: 'ch1',
     name: 'Chilli Chicken',
-    description: 'Crispy chicken chunks wok-tossed with fresh chillies, onions, and bell peppers.',
+    description: 'Crispy chicken · fresh chillies',
     price: 200,
     categoryId: 'chicken',
     image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=800',
@@ -83,7 +83,7 @@ export const FOOD_ITEMS = [
   {
     id: 'ch2',
     name: 'Chicken 65',
-    description: 'Deep-fried spicy chicken bites packed with South Indian flavors.',
+    description: 'Spicy · deep-fried · South Indian',
     price: 190,
     categoryId: 'chicken',
     image: 'https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&q=80&w=800',
@@ -92,7 +92,7 @@ export const FOOD_ITEMS = [
   {
     id: 'mo1',
     name: 'Veg Steamed Momos',
-    description: '6 Pcs of classic steamed dumplings stuffed with mixed vegetables.',
+    description: '6 Pcs · mixed vegetables',
     price: 100,
     categoryId: 'momos',
     image: 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&q=80&w=800',
@@ -101,7 +101,7 @@ export const FOOD_ITEMS = [
   {
     id: 'cb1',
     name: 'Veg Combo',
-    description: 'Gobi Manchurian + Veg Fried Rice',
+    description: 'Gobi Manchurian · Veg Fried Rice',
     price: 229,
     categoryId: 'combos',
     image: 'https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&q=80&w=800',
@@ -110,7 +110,7 @@ export const FOOD_ITEMS = [
   {
     id: 'cb2',
     name: 'Chicken Combo',
-    description: 'Chicken Manchurian + Chicken Fried Rice',
+    description: 'Chicken Manchurian · Chicken Fried Rice',
     price: 329,
     categoryId: 'combos',
     image: 'https://images.unsplash.com/photo-1547496502-affa22d38842?auto=format&fit=crop&q=80&w=800',

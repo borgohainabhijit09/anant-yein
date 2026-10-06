@@ -1,80 +1,138 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Search, ChevronRight } from 'lucide-react';
 import { CATEGORIES, FOOD_ITEMS } from '@/data/mock';
-import { FoodCard } from '@/components/FoodCard';
+import { ChevronRight, ShoppingBag } from 'lucide-react';
+import { FloatingCart } from '@/components/FloatingCart';
 
 export default function Home() {
-  const popularItems = FOOD_ITEMS.filter((item) => item.popular);
+  const signatureDishes = FOOD_ITEMS.filter((item) => item.popular).slice(0, 3);
+  const heroDish = FOOD_ITEMS.find((item) => item.name === 'Gobi Manchurian');
 
   return (
-    <div className="pb-8">
-      {/* Header */}
-      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md px-4 py-3 flex items-center justify-between">
-        <div>
-          <p className="text-xs text-gray-500 font-medium uppercase tracking-wider">Delivering to</p>
-          <div className="flex items-center text-orange-600 font-semibold text-sm mt-0.5">
-            <MapPin size={16} className="mr-1" />
-            <span className="text-gray-900">Indiranagar, Bangalore</span>
-            <ChevronRight size={16} className="text-gray-400 ml-1" />
-          </div>
+    <div className="bg-stone-50 min-h-screen pb-safe">
+      <header className="bg-stone-900 text-stone-50 px-5 pt-8 pb-4 flex flex-col items-center justify-center relative">
+        <div className="text-center">
+          <h1 className="font-serif text-3xl font-bold tracking-tight text-white mb-1">CRAVE</h1>
+          <p className="text-[#c5a059] text-[10px] font-medium tracking-[0.2em] uppercase">
+            Indian • Chinese • Fast Food
+          </p>
         </div>
-        <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
-           <img src="https://i.pravatar.cc/150?img=33" alt="Profile" className="w-full h-full object-cover" />
+        <div className="absolute right-5 top-10">
+          <p className="text-stone-400 text-[9px] tracking-wider uppercase text-right leading-tight">
+            Indiranagar<br/>Bangalore
+          </p>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <div className="px-4 mt-2">
-        <div className="relative w-full h-36 rounded-2xl overflow-hidden shadow-lg">
-          <Image 
-            src="https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&q=80&w=1200"
-            alt="Indian Chinese Food"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent flex flex-col justify-center p-5">
-            <span className="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded-md w-fit mb-1.5 uppercase tracking-wide">Limited Time</span>
-            <h1 className="text-white text-xl font-black leading-tight max-w-[70%]">
-              Freshly Wok'd <br />For You
-            </h1>
-            <p className="text-gray-200 text-[11px] mt-1.5 font-medium">Get 20% off your first order!</p>
-            <Link href="/menu" className="mt-3 bg-white text-gray-900 text-[11px] font-bold px-3 py-1.5 rounded-full w-fit shadow-md">
-              Order Now
-            </Link>
+      {/* Cinematic Hero */}
+      <div className="relative w-full h-[65vh] max-h-[600px] bg-stone-900">
+        <Image 
+          src="https://images.unsplash.com/photo-1596560548464-f010549b84d7?auto=format&fit=crop&q=80&w=1200"
+          alt="Signature Chicken Fried Rice"
+          fill
+          priority
+          className="object-cover opacity-80"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-stone-900/30 to-transparent flex flex-col justify-end p-6 pb-12">
+          <div className="w-12 h-[1px] bg-[#c5a059] mb-4"></div>
+          <h2 className="text-stone-50 font-serif text-4xl md:text-5xl font-bold leading-[1.1] mb-2 drop-shadow-md">
+            WOK-FRESH.<br />MADE FOR YOU.
+          </h2>
+          <p className="text-stone-300 text-sm mb-6 font-medium tracking-wide">
+            Experience authentic flavors, fire-tossed to perfection.
+          </p>
+          <Link 
+            href="/menu" 
+            className="bg-[#d96c2c] text-white text-xs font-bold px-8 py-3.5 uppercase tracking-widest w-fit shadow-lg shadow-orange-900/20 active:scale-95 transition-transform"
+          >
+            Order Now
+          </Link>
+        </div>
+      </div>
+
+      {/* Explore Menu Categories */}
+      <div className="py-10 bg-stone-50">
+        <div className="px-5 mb-5 flex items-end justify-between">
+          <div>
+            <h3 className="font-serif text-2xl font-bold text-stone-900">Explore Menu</h3>
+            <div className="w-8 h-[2px] bg-[#d96c2c] mt-2"></div>
           </div>
+          <Link href="/menu" className="text-stone-500 text-xs font-semibold tracking-wider uppercase flex items-center">
+            See All <ChevronRight size={14} className="ml-0.5" />
+          </Link>
         </div>
-      </div>
-
-      {/* Categories */}
-      <div className="mt-6">
-        <div className="flex items-center justify-between px-4 mb-3">
-          <h2 className="text-base font-bold text-gray-900">Categories</h2>
-          <Link href="/menu" className="text-orange-600 text-xs font-semibold">See All</Link>
-        </div>
-        <div className="flex overflow-x-auto scrollbar-hide px-4 pb-2 gap-3">
+        
+        <div className="flex overflow-x-auto scrollbar-hide px-5 pb-4 gap-4">
           {CATEGORIES.map((category) => (
-            <Link key={category.id} href={`/menu?category=${category.id}`} className="flex flex-col items-center gap-1.5 min-w-[64px]">
-              <div className="w-14 h-14 rounded-2xl bg-white shadow-sm border border-gray-100 flex items-center justify-center text-2xl">
-                {category.icon}
+            <Link key={category.id} href={`/menu?category=${category.id}`} className="flex flex-col items-center gap-3 min-w-[76px] group">
+              <div className="w-18 h-24 rounded-full overflow-hidden relative shadow-md shadow-stone-200 border-2 border-transparent group-hover:border-[#d96c2c] transition-colors">
+                <Image src={category.image} alt={category.name} fill className="object-cover" />
+                <div className="absolute inset-0 bg-black/10"></div>
               </div>
-              <span className="text-[11px] font-medium text-gray-700 text-center leading-tight">{category.name}</span>
+              <span className="text-[11px] font-bold text-stone-700 tracking-wide uppercase text-center">{category.name}</span>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Popular Items */}
-      <div className="mt-8 px-4">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-gray-900">Popular Now</h2>
-        </div>
-        <div className="flex flex-col">
-          {popularItems.map((item) => (
-            <FoodCard key={item.id} {...item} />
+      {/* What's Cooking - Editorial Section */}
+      <div className="px-5 py-8 bg-white border-y border-stone-100">
+        <h3 className="font-serif text-2xl font-bold text-stone-900 mb-2">What's Cooking</h3>
+        <p className="text-stone-500 text-xs tracking-wider uppercase mb-6">Our Signature Creations</p>
+        
+        <div className="space-y-6">
+          {signatureDishes.map((item) => (
+            <div key={item.id} className="group relative w-full h-64 rounded-none overflow-hidden bg-stone-100">
+              <Image src={item.image} alt={item.name} fill className="object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/90 via-stone-900/40 to-transparent flex flex-col justify-end p-5">
+                <div className="flex justify-between items-end">
+                  <div className="max-w-[75%]">
+                    <h4 className="text-stone-50 font-serif text-xl font-bold mb-1">{item.name}</h4>
+                    <p className="text-stone-300 text-[11px] line-clamp-2 leading-relaxed">{item.description}</p>
+                  </div>
+                  <span className="text-[#c5a059] font-bold text-lg">₹{item.price}</span>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+
+      {/* From The Wok */}
+      {heroDish && (
+        <div className="px-5 py-12 bg-stone-900 text-center border-b border-stone-800">
+          <p className="text-[#c5a059] text-[10px] tracking-[0.2em] uppercase font-bold mb-3">From The Wok</p>
+          <h3 className="font-serif text-3xl font-bold text-stone-50 mb-6">{heroDish.name}</h3>
+          <div className="relative w-full h-72 rounded-none overflow-hidden mb-6 shadow-2xl">
+            <Image src={heroDish.image} alt={heroDish.name} fill className="object-cover" />
+          </div>
+          <p className="text-stone-400 text-sm mb-6 max-w-[80%] mx-auto leading-relaxed">{heroDish.description}</p>
+          <Link 
+            href="/menu"
+            className="inline-block border border-[#c5a059] text-[#c5a059] hover:bg-[#c5a059] hover:text-stone-900 transition-colors text-xs font-bold px-8 py-3 uppercase tracking-widest"
+          >
+            Taste It Now - ₹{heroDish.price}
+          </Link>
+        </div>
+      )}
+
+      {/* Footer */}
+      <footer className="bg-stone-900 text-center py-10 px-6">
+        <h2 className="font-serif text-2xl font-bold tracking-tight text-stone-50 mb-4">CRAVE</h2>
+        <p className="text-stone-400 text-xs leading-relaxed max-w-[200px] mx-auto mb-6">
+          456 100ft Road, Apt 4B<br />
+          Indiranagar, Bangalore 560038
+        </p>
+        <p className="text-[#c5a059] text-xs font-bold tracking-widest uppercase mb-8">
+          +91 98765 43210
+        </p>
+        <div className="text-[10px] text-stone-600 uppercase tracking-widest">
+          © {new Date().getFullYear()} Crave Fast Food
+        </div>
+      </footer>
+
+      {/* Floating Cart Pill */}
+      <FloatingCart />
     </div>
   );
 }
