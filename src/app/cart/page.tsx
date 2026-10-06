@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 export default function CartPage() {
-  const { cart, updateQuantity, removeFromCart, subtotal, totalItems } = useCart();
+  const { cart, addToCart, decreaseQuantity, removeFromCart, subtotal, totalItems } = useCart();
   const router = useRouter();
 
   const deliveryFee = 20;
@@ -79,20 +79,14 @@ export default function CartPage() {
                       
                       <div className="flex items-center gap-3 bg-stone-50 rounded-full p-1 border border-stone-100">
                         <button 
-                          onClick={() => {
-                            if (cartItem.quantity <= 1) {
-                              removeFromCart(cartItem.id);
-                            } else {
-                              updateQuantity(cartItem.id, cartItem.quantity - 1);
-                            }
-                          }}
+                          onClick={() => decreaseQuantity(cartItem.id)}
                           className="w-7 h-7 flex items-center justify-center text-stone-600 hover:text-stone-900 bg-white rounded-full shadow-sm transition-colors"
                         >
                           <Minus size={14} strokeWidth={2} />
                         </button>
                         <span className="text-xs font-bold w-3 text-center text-stone-900">{cartItem.quantity}</span>
                         <button 
-                          onClick={() => updateQuantity(cartItem.id, cartItem.quantity + 1)}
+                          onClick={() => addToCart(cartItem.id)}
                           className="w-7 h-7 flex items-center justify-center text-stone-600 hover:text-stone-900 bg-white rounded-full shadow-sm transition-colors"
                         >
                           <Plus size={14} strokeWidth={2} />
